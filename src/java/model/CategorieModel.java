@@ -33,7 +33,7 @@ public class CategorieModel {
              PreparedStatement stmt = con.prepareStatement(sql);
              
              stmt.setInt(1, cat.getId());
-             System.out.println("categorie selectionner " + cat.getId());
+             //System.out.println("categorie selectionner " + cat.getId());
              try {
                  ResultSet rs = stmt.executeQuery();
                  
@@ -55,78 +55,7 @@ public class CategorieModel {
      
      }
     
-     /**
-      * UPDATE
-      * @param con
-      * @param cat 
-      */
-    public static void modifyCategorie(Connection con, Categorie cat){
-         
-         //String sql = "update categories set value=? WHERE id=?";
-         String sql = "UPDATE categories SET value=? WHERE id=?";
-
-         
-         try {
-             
-             PreparedStatement stmt = con.prepareStatement(sql);
-             
-             stmt.setString(1, cat.getValue());
-             stmt.setLong(2, cat.getId());
-             stmt.executeUpdate();
-             
-         } catch (SQLException e) {
-             System.out.println("ex " + e);
-         }
-     
-     }     
-    
-    /**
-     * INSERT
-     * @param con
-     * @param cat 
-     */
-    public static void insertCategorie(Connection con, Categorie cat){
-         
-         String sql = "insert into categories (value) values (?)";
-         //String sql = "INSERT INTO categories (value) VALUES ('coucou')";
-
-         
-         try {
-             
-             PreparedStatement stmt = con.prepareStatement(sql);
-             
-             stmt.setString(1, cat.getValue());
-             System.out.println("ajout -> " + cat.getValue());
-             stmt.executeUpdate();
-             
-         } catch (SQLException e) {
-             System.out.println("ex " + e);
-         }
-     
-     }
-
-    /***
-     * delete
-     * @param con
-     * @param cat 
-     */
-    public static void deleteCategorie(Connection con, Categorie cat){
-         
-        String sql = "DELETE FROM categories WHERE id=?";
-         
-         try {
-             
-             PreparedStatement stmt = con.prepareStatement(sql);
-             
-             stmt.setLong(1, cat.getId());
-             stmt.executeUpdate();
-             System.out.println("del -> " + cat.getId());
-             
-         } catch (SQLException e) {
-             System.out.println("ex " + e);
-         }
-     
-     }
+   
     
     /**
      * SELECT fetch

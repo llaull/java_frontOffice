@@ -1,5 +1,6 @@
 package model;
 
+import beans.Categorie;
 import beans.News;
 import beans.Tags;
 import java.sql.Connection;
@@ -206,5 +207,57 @@ public class NewsModel {
         return News;
 
     }
+    
+ /**
+     * affiche les news avec un id de categorie commun
+     *
+     * @param con
+     * @param c
+     * @return
+     */
+    public static List<News> getNewsCategorie(Connection con, Categorie c) {
+
+        String sql = "SELECT * FROM news WHERE categorie_ID=?";
+
+        List<News> News = new ArrayList<>();
+
+        try {
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, c.getId());
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                try {
+
+                    while (rs.next()) {
+
+                        News n = new News();
+                        n.setId(rs.getInt("id"));
+                        n.setTitre(rs.getString("titre"));
+                        //n.getCategorie().setValue(rs.getString("nameCat"));
+
+                        News.add(n);  //ajout à l'arraylist
+
+                    }
+
+                } finally {
+                    rs.close();
+                }
+
+            } finally {
+                stmt.close();
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println("e" + ex);
+
+        }
+
+        return News;
+
+    }    
 
 }

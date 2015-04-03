@@ -28,6 +28,10 @@
         <servlet-name>NewsByTags</servlet-name>
         <servlet-class>Servlet.NewsByTags</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewsByCategorie</servlet-name>
+        <servlet-class>Servlet.NewsByCategorie</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Surf</servlet-name>
         <url-pattern>/Surf</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>NewsByTags</servlet-name>
         <url-pattern>/viewByTag</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsByCategorie</servlet-name>
+        <url-pattern>/viewByCat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

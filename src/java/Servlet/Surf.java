@@ -83,19 +83,17 @@ public class Surf extends HttpServlet {
         if (path.equals("/Surf")) {
             System.out.println("mes news");
 
-                                List<Categorie> categories = new ArrayList<>();
-                    categories = CategorieModel.getCategories(conn);
-                    System.out.println("cat = " + categories.size());
-                    request.setAttribute("listeCategorie", categories);
-            
-            
+            //envoie les categorie a la jsp
+            List<Categorie> categories = new ArrayList<>();
+            categories = CategorieModel.getCategories(conn);
+            System.out.println("cat = " + categories.size());
+            request.setAttribute("listeCategorie", categories);
+
+            //envoie les news a la jsp
             List<News> news = new ArrayList<>();
             news = NewsModel.getNews(conn);
             System.out.println("cat = " + news.size());
             request.setAttribute("listeNew", news);
-            
-
-                            
 
             request.getRequestDispatcher("/WEB-INF/news/index.jsp").forward(request, response);
         }
