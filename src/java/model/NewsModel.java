@@ -131,6 +131,7 @@ public class NewsModel {
                         News n = new News();
                         n.setId(rs.getInt("id"));
                         n.setTitre(rs.getString("titre"));
+                        n.setTxt(rs.getString("txt"));
                         n.getCategorie().setValue(rs.getString("nameCat"));
                         //n.setNewsTagsString(rs.getString("tags"));
 
@@ -184,7 +185,7 @@ public class NewsModel {
                         News n = new News();
                         n.setId(rs.getInt("id"));
                         n.setTitre(rs.getString("titre"));
-                        //n.getCategorie().setValue(rs.getString("nameCat"));
+                        n.setTxt(rs.getString("txt"));
 
                         News.add(n);  //ajout à l'arraylist
 
@@ -236,7 +237,7 @@ public class NewsModel {
                         News n = new News();
                         n.setId(rs.getInt("id"));
                         n.setTitre(rs.getString("titre"));
-                        //n.getCategorie().setValue(rs.getString("nameCat"));
+                        n.setTxt(rs.getString("txt"));
 
                         News.add(n);  //ajout à l'arraylist
 

@@ -13,5 +13,6 @@
         <a href="<%=application.getContextPath()%>/viewByTag?name=${row.value}&id=${row.id}"><button type="button" class="btn btn-info">${row.value}</button></a>
 
     </c:forEach>
+        <br><br><a href="<%=application.getContextPath()%>/"><button type="button" class="btn btn-alert">retour</button></a>
 </div>
 <jsp:include page="../elements/footer.jsp" />

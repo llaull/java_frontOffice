@@ -3,11 +3,11 @@
 <div class="container">
     <h1>les news</h1>
 
-    <div>Categorie</div>
     <form role="form" action="<%=application.getContextPath()%>/viewByCat" method="post">
-        <div class="form-group col-sm-6">
+        <div class="form-group">
             <label>Categorie disponnible
                 <select id="categorie" name="categorie" class="form-control">
+                    <option id="0" value="0">Toute les news</option>
                     <c:forEach var="row" items="${requestScope.listeCategorie}">
                         <option id="${row.id}" value="${row.id}">${row.value}</option>
                     </c:forEach>
@@ -17,26 +17,16 @@
         <button type="submit" class="btn btn-success">ok</button>
     </form>
 
+    <div>
+        <c:forEach var="row" items="${requestScope.listeNew}">
+            <article style="border:1px solid grey; background: #ccc; margin-top: 10px;">
+                <h1>${row.titre}</h1>
+                <p>${row.categorie.value}</p>
+                <p>${row.txt}</p>
+                <a href="<%=application.getContextPath()%>/New?id=${row.id}"><button type="button" class="btn btn-info btn-sm">Lire</button></a></a>
+            </article>              
+        </c:forEach>
+    </div>
 
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Libellé</th>
-                <th>Categorie</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="row" items="${requestScope.listeNew}">
-                <tr>
-                    <td>${row.id}</td>
-                    <td>${row.titre}</td>
-                    <td>${row.categorie.value}</td>
-                    <td><a href="<%=application.getContextPath()%>/New?id=${row.id}"><button type="button" class="btn btn-info btn-sm">Lire</button></a></a></td>
-
-                </tr>
-            </c:forEach>
-            </div>
-            <jsp:include page="../elements/footer.jsp" />
+</div>
+<jsp:include page="../elements/footer.jsp" />

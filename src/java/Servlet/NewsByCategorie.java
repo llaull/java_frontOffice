@@ -7,9 +7,7 @@ package Servlet;
 
 import beans.Categorie;
 import beans.News;
-import beans.Tags;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;

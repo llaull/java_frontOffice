@@ -92,6 +92,7 @@ public class Surf extends HttpServlet {
             //envoie les news a la jsp
             List<News> news = new ArrayList<>();
             news = NewsModel.getNews(conn);
+            
             System.out.println("cat = " + news.size());
             request.setAttribute("listeNew", news);
 
