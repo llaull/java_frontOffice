@@ -43,20 +43,32 @@ public class NewsByCategorie extends HttpServlet {
         //controle du patern 
         if (path.equals("/viewByCat")) {
 
-            //envoie les categorie a la jsp
-            List<Categorie> categories = new ArrayList<>();
-            categories = CategorieModel.getCategories(conn);
-            request.setAttribute("listeCategorie", categories);
+            if (Integer.parseInt(request.getParameter("categorie")) != 0) {
 
-            Categorie c = new Categorie();
-            c.setId(Integer.parseInt(request.getParameter("categorie")));
-            System.out.println("mes news avec la categorie -> " + Integer.parseInt(request.getParameter("categorie")));
+                //envoie les categorie a la jsp
+                List<Categorie> categories = new ArrayList<>();
+                categories = CategorieModel.getCategories(conn);
+                request.setAttribute("listeCategorie", categories);
 
-            List<News> news = new ArrayList<>();
-            news = NewsModel.getNewsCategorie(conn, c);
-            request.setAttribute("listeNew", news);
+                Categorie c = new Categorie();
+                c.setId(Integer.parseInt(request.getParameter("categorie")));
+                System.out.println("mes news avec la categorie -> " + Integer.parseInt(request.getParameter("categorie")));
+                
+                //creation d'un atribute astuce pour avoir l'id de la categorie
+                //envoyer en get à la servelet
+                request.setAttribute("astuce", Integer.parseInt(request.getParameter("categorie")));
 
-            request.getRequestDispatcher("/WEB-INF/news/index.jsp").forward(request, response);
+                List<News> news = new ArrayList<>();
+                news = NewsModel.getNewsCategorie(conn, c);
+                request.setAttribute("listeNew", news);
+
+                request.getRequestDispatcher("/WEB-INF/news/index.jsp").forward(request, response);
+                
+            } else {
+                
+                // si on choisit toute les categories 
+                response.sendRedirect("/frontOffice/");
+            }
 
         }
     }
